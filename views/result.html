@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>A-Frame Shooter</title>
+    <script src="../vendor/aframe.min.js"></script>
+    <script src="../vendor/aframe-extras.min.js"></script>
+</head>
+<script src="js/app.js"></script>
+<body>
+<a-scene get-results>
+    <a-sky src="assets/images/results.jpg" rotation="0 -60 0"></a-sky>
+    <a-entity id="highscore-text"
+              text="value: High score table; align: center; font: kelsonsans; width: 6; color: white"
+              geometry="primitive: plane; width: 0.9; height: 0.5"
+              material="opacity: 0"
+              position="0 5.51009 -5"
+              scale="5 5 5"></a-entity>
+
+    <a-entite id="highscore-table"></a-entite>
+
+    <a-entity id="menu-text" rotation="0 -40 0"
+              menu
+              text="value: Menu; align: center; font: kelsonsans; width: 6; color: green"
+              geometry="primitive: plane; width: 0.9; height: 0.5"
+              material="opacity: 0"
+              position="8.38239 5.37211 -4.21964"
+              scale="5 5 5"></a-entity>
+
+    <a-entity camera look-controls>
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: white; shader: flat">
+        </a-entity>
+    </a-entity>
+</a-scene>
+</body>
+</html>
