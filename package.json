@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start:client": "webpack-dev-server --port $PORT --host 0.0.0.0  --config webpack.config.js",
-    "postinstall": "npm run build",
     "start": "node server.js",
     "lint": "semistandard -v | snazzy"
   },
