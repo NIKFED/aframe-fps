@@ -11,7 +11,7 @@ const config = require('./webpack.config.js');
 const ejs = require('ejs');
 
 const app = express();
-const port = 5000;
+const port = 8080;
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
 // const client = redis.createClient(REDIS_PORT);
 const client = redis.createClient(process.env.REDIS_URL);
@@ -21,26 +21,26 @@ client.on('error', function (err) {
     console.log('Error ' + err);
 });
 
-// const devServerEnabled = true;
-//
-// if (devServerEnabled) {
-//     //reload=true:Enable auto reloading when changing JS files or content
-//     //timeout=1000:Time from disconnecting from server to reconnecting
-//     config.entry.app.unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
-//
-//     //Add HMR plugin
-//     config.plugins.push(new webpack.HotModuleReplacementPlugin());
-//
-//     const compiler = webpack(config);
-//
-//     //Enable "webpack-dev-middleware"
-//     app.use(webpackDevMiddleware(compiler, {
-//         publicPath: config.output.publicPath
-//     }));
-//
-//     //Enable "webpack-hot-middleware"
-//     app.use(webpackHotMiddleware(compiler));
-// }
+const devServerEnabled = true;
+
+if (devServerEnabled) {
+    //reload=true:Enable auto reloading when changing JS files or content
+    //timeout=1000:Time from disconnecting from server to reconnecting
+    config.entry.app.unshift('webpack-hot-middleware/client?reload=true&timeout=1000');
+
+    //Add HMR plugin
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+    const compiler = webpack(config);
+
+    //Enable "webpack-dev-middleware"
+    app.use(webpackDevMiddleware(compiler, {
+        publicPath: config.output.publicPath
+    }));
+
+    //Enable "webpack-hot-middleware"
+    app.use(webpackHotMiddleware(compiler));
+}
 
 app.use(express.static('./'));
 app.set('views', __dirname + '/views');
