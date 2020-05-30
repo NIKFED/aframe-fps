@@ -54,7 +54,7 @@ app.get('/game', function (req, res, next) {
     next();
 });
 
-app.get('/menu', function (req, res, next) {
+app.get('/', function (req, res, next) {
     res.render('menu.html');
     next();
 });
