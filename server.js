@@ -11,7 +11,7 @@ const config = require('./webpack.config.js');
 const ejs = require('ejs');
 
 const app = express();
-const port = 8080;
+const port = 5000;
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
 // const client = redis.createClient(REDIS_PORT);
 const client = redis.createClient(process.env.REDIS_URL);
