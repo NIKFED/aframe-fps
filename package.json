@@ -49,6 +49,7 @@
   "dependencies": {
     "aframe-super-hot-html-loader": "^2.1.0",
     "aframe-super-hot-loader": "^1.7.0",
-    "diff-dom": "^4.1.6"
+    "diff-dom": "^4.1.6",
+    "ioredis": "^4.17.3"
   }
 }

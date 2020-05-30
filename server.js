@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const multipart = multer();
 const redis = require('redis');
+const redisIo = require('ioredis');
 const async = require('async');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -12,7 +13,9 @@ const ejs = require('ejs');
 const app = express();
 const port = 8080;
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
-const client = redis.createClient(REDIS_PORT);
+// const client = redis.createClient(REDIS_PORT);
+const client = redis.createClient(process.env.REDIS_URL);
+const redisIoEx = new redisIo(process.env.REDIS_URL);
 
 client.on('error', function (err) {
     console.log('Error ' + err);
