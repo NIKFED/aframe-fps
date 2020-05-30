@@ -13,6 +13,7 @@ const ejs = require('ejs');
 const app = express();
 const port = 5000;
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
+const host = '0.0.0.0';
 // const client = redis.createClient(REDIS_PORT);
 const client = redis.createClient(process.env.REDIS_URL);
 const redisIoEx = new redisIo(process.env.REDIS_URL);
@@ -117,6 +118,7 @@ app.get('*', function (req, res) {
     res.end('Page not found');
 });
 
-app.listen(port || 5000, () => {
+app.listen(port,host, () => {
     console.log('Server started on port:' + port);
+    console.log('Server started on host:' + host);
 });
