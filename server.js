@@ -114,8 +114,7 @@ app.delete('/api/results/delete', function (req, res) {
 });
 
 app.get('*', function (req, res) {
-    res.status(404);
-    res.end('Page not found');
+    res.redirect("/menu")
 });
 
 app.listen(port, host, () => {
