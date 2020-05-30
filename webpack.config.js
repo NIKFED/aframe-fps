@@ -1,11 +1,11 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        port: 8080,
-        host: `localhost`,
+        port: process.env.PORT,
+        host: `0.0.0.0.`,
     },
     entry: {
         app: [

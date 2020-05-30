@@ -11,7 +11,7 @@ const config = require('./webpack.config.js');
 const ejs = require('ejs');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 3000;
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
 const host = '0.0.0.0';
 // const client = redis.createClient(REDIS_PORT);
@@ -118,7 +118,7 @@ app.get('*', function (req, res) {
     res.end('Page not found');
 });
 
-app.listen(port,host, () => {
+app.listen(port, host, () => {
     console.log('Server started on port:' + port);
     console.log('Server started on host:' + host);
 });
