@@ -27,7 +27,7 @@ AFRAME.registerComponent('login', {
             username.setAttribute('text', {
                 value: this.schema.string
             });
-        } else if ((event.keyCode !== 16) || (event.keyCode !== 18) || (event.keyCode !== 20)) { // not Shift, Ctrl and Caps
+        } else if ((event.keyCode !== 16) && (event.keyCode !== 18) && (event.keyCode !== 20)) { // not Shift, Ctrl and Caps
             const xhr = new XMLHttpRequest();
 
             xhr.open('post', '/api/username/register', true);
