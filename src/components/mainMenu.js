@@ -16,18 +16,18 @@ AFRAME.registerComponent('login', {
 
     usernameInput: function () {
         let username = document.getElementById('username');
-        if (((event.keyCode > 47) && (event.keyCode < 58)) || ((event.keyCode > 64) && (event.keyCode < 91))) {
+        if (event.keyCode === 8) { // Backspace
             this.schema.string = this.schema.string.slice(0, this.schema.string.length - 1);
             username.setAttribute('text', {
                 value: this.schema.string
             });
         }
-        else if (event.keyCode !== 13) { // not Enter
+        else if (((event.keyCode > 47) && (event.keyCode < 58)) || ((event.keyCode > 64) && (event.keyCode < 91))) {
             this.schema.string = this.schema.string + event.key;
             username.setAttribute('text', {
                 value: this.schema.string
             });
-        } else {
+        } else if (event.keyCode === 13) { // Enter
             const xhr = new XMLHttpRequest();
 
             xhr.open('post', '/api/username/register', true);
