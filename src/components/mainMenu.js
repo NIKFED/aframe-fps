@@ -16,7 +16,7 @@ AFRAME.registerComponent('login', {
 
     usernameInput: function () {
         let username = document.getElementById('username');
-        if (event.keyCode === 8) { // BackSpace
+        if (((event.keyCode > 47) && (event.keyCode < 58)) || ((event.keyCode > 64) && (event.keyCode < 91))) {
             this.schema.string = this.schema.string.slice(0, this.schema.string.length - 1);
             username.setAttribute('text', {
                 value: this.schema.string
@@ -27,7 +27,7 @@ AFRAME.registerComponent('login', {
             username.setAttribute('text', {
                 value: this.schema.string
             });
-        } else if ((event.keyCode !== 16) && (event.keyCode !== 18) && (event.keyCode !== 20)) { // not Shift, Ctrl and Caps
+        } else {
             const xhr = new XMLHttpRequest();
 
             xhr.open('post', '/api/username/register', true);
